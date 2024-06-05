@@ -1,8 +1,8 @@
 # Main Playbook
 ---
-- hosts: kali
+- name: "Kali ansible playbook"
+  hosts: localhost
+  connection: local
   roles:
     - common
-    - external
-    - internal 
 

@@ -1,28 +1,15 @@
 - name: Install and upgrade pip
-  ansible.builtin.pip:
+  pip:
     name: pip
     extra_args: --upgrade
     executable: pip3
 
 - name: Install python packages
-  ansible.builtin.pip:
+  pip:
     name: '{{ item }}'
     state: latest
     executable: pip3
   loop: '{{ pip_packages }}'
 
 - name: Install pipx
-  ansible.builtin.shell: python3 -m pip install --user pipx
-
-- name: Source Path and Download pipx 
-  become_user: '{{ zsh_user }}'
-  ansible.builtin.shell: source .zshrc && pipx install witnessme --force
-  args:
-    executable: /bin/zsh
-
-- name: Source Path and Download pipx 
-  become_user: '{{ zsh_user }}'
-  ansible.builtin.shell: source .zshrc && pipx install crackmapexec --force
-  args:
-    executable: /bin/zsh
-
+  shell: python3 -m pip install --user pipx

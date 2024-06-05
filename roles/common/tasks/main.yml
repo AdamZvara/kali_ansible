@@ -1,20 +1,80 @@
 # roles/common/main.yml
 ---
-- name: apt tasks 
-  become: True
-  ansible.builtin.import_tasks: apt.yml
-  
-- name: Set Environment Variables in .zshrc file 
-  become: True
-  ansible.builtin.import_tasks: env.yml
+- name: apt tasks
+  include_tasks: apt.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - apt
+  tags:
+    - always
+
+- name: Set Environment Variables in .zshrc file
+  include_tasks: env.yml
+  args:
+    apply:
+      tags:
+        - env
+  tags:
+    - always
 
 - name: Python Packages
-  ansible.builtin.import_tasks: pip.yml
-  
-- name: Install Tools from GitHub
-  become: True
-  ansible.builtin.import_tasks: git.yml
+  include_tasks: pip.yml
+  args:
+    apply:
+      tags:
+        - pip
+  tags:
+    - always
 
-- name: Install Binary Packages
-  become: True
-  ansible.builtin.import_tasks: binaries.yml
+- name: Install Tools from GitHub
+  include_tasks: git.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - git
+  tags:
+    - always
+
+# Binaries are empty for now
+# - name: Install Binary Packages
+#   include_tasks: binaries.yml
+#   args:
+#     apply:
+#       become: True
+#       tags:
+#         - binaries
+#   tags:
+#     - always
+
+- name: Configure Burp
+  include_tasks: burp.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - burp
+  tags:
+    - always
+
+- name: Firefox customizations
+  include_tasks: firefox.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - firefox
+  tags:
+    - always
+
+- name: Configure pwntools
+  include_tasks: pwn.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - pwn
+  tags:
+    - always

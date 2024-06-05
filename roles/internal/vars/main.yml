@@ -1,0 +1,24 @@
+---
+# zsh_setup
+zsh_user: kali
+
+# internal only apt related packages
+i_apt_packages:
+- bloodhound
+- nbtscan-unixwiz
+    
+# group ownership for the tools that are installed directly to /opt
+group: kali
+user: kali
+
+# pip setup
+pip_install_internal: 
+  - {path: "/opt/network-tools/certi"}
+  - {path: "/opt/network-tools/certipy"}
+  - {path: "/opt/osint-tools/DumpsterDiver"}
+  
+# python setup
+python_setup_internal:
+  - {path: "/opt/network-tools/pywhisker"} 
+
+# binaries

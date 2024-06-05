@@ -1,0 +1,37 @@
+---
+# zsh_setup
+zsh_user: kali
+
+# external packages
+e_apt_packages:
+- assetfinder
+- spiderfoot
+- sublist3r
+
+# Group ownership for the tools that are installed directly to /opt
+group: kali
+user: kali
+
+# pip setup
+pip_install_external: 
+  - {path: "/opt/osint-tools/knockpy"}
+  - {path: "/opt/osint-tools/msdorkdump"}
+
+# python setup
+python_setup_external:
+  - {path: "/opt/web-tools/VHostScan"}
+  - {path: "/opt/web-tools/Goblyn"}
+  - {path: "/opt/network-tools/spiderfoot"}
+  - {path: "/opt/network-tools/censys-subdomain-finder"}
+
+# GoLang Tools -- Only on external
+go_tools:
+  - {tool: "hakrawler", repo: "github.com/hakluke/hakrawler@latest"}
+  - {tool: "shhgit", repo: "github.com/eth0izzle/shhgit@latest"}
+  - {tool: "gitleaks", repo: "github.com/zricethezav/gitleaks.git@latest"}
+  - {tool: "trufflehog", repo: "github.com/trufflesecurity/trufflehog.git@latest"}
+  - {tool: "CloudBrute", repo: "github.com/0xsha/CloudBrute@latest"}
+  - {tool: "waybackurls", repo: "github.com/tomnomnom/waybackurls@latest"}
+  - {tool: "subjack", repo: "github.com/haccer/subjack@latest"}
+
+# binaries

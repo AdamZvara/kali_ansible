@@ -1,0 +1,17 @@
+- name: Update install path in install.sh
+  command: sed -i -e "s/~/\/opt\/debug/g" /opt/debug/gdb-peda-pwndbg-gef/install.sh
+
+- name: Install debuggers
+  expect:
+    command: /opt/debug/gdb-peda-pwndbg-gef/install.sh
+    responses: # skip responses
+      "skip" : "y"
+    echo: True
+
+- name: Copy gdbinit
+  copy:
+    src: /opt/debug/gdb-peda-pwndbg-gef/gdbinit
+    dest: "{{ ansible_env.HOME }}/.gdbinit"
+
+- name: Update gdbinit
+  command: sed -i "s/~\/\(.*\)\/\(.*\)\.py$/\/opt\/debug\/\1\/\2\.py/" "{{ ansible_env.HOME }}"/.gdbinit
