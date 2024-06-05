@@ -1,24 +1,20 @@
 <h1 align="center">Offensive Kali Ansible Playbook</h1>
 
-[![Status](https://img.shields.io/badge/Status-active-brightgreen)]() 
-[![GitHub Issues](https://img.shields.io/badge/Issues-0-yellow)]()
-[![License](https://img.shields.io/badge/License-gpl--3.0%20-blue)](/LICENSE)
-
 ---
 
 <p align="center"> This Ansible Playbook automates the setup of kali machines used for both external and internal penetration tests. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine.
   <br>
-</p>  
+  <b>This repository is a modified fork and contains my personal preferences</b>
+</p>
 
-## 📝 Table of Contents
+## Table of Contents
 + [Description](#description)
 + [Getting Started](#getting_started)
-+ [Usage](#usage)
-+ [Execution](#execution)
++ [Roles](#roles)
 + [Authors](#authors)
 + [Acknowledgments](#acknowledgement)
 
-## 🧐 Description <a name = "description"></a>
+## Description <a name = "description"></a>
 This playbook contains multiple tasks embedded within the roles. The current roles included in this ansible playbook include the following:
 
 - Common
@@ -28,148 +24,33 @@ This playbook contains multiple tasks embedded within the roles. The current rol
   - Installation of binary only tools
   - Sets up basic zsh environment
   - Sets up and install python models and packages
+  - Sets up burpsuite and installs certificate into firefox
+  - Sets up firefox and installs extensions
 - External
-  - Installs external testing related apt packages
-  - Installs external testing related golang packages
-  - Installs external testing related github repos
+  - Not used - maybe in future for external pentesting tools
 - Internal
-  - Installs internal testing relating apt packages
-  - Installs internal testing related github reps
+  - Not used - maybe in future for internal pentesting tools
 
-## 🏁 Getting Started <a name = "getting_started"></a>
-There are two ways you can deploy this ansible playbook. 
-- On local Kali Host
-- Remote Connection from mac (or linux) to Single or Multiple Hosts *Sorry Windows*
+## Getting Started <a name = "getting_started"></a>
+Currently, only *common* role is being installed
+on a local kali host machine (for me it's a virtual machine guest inside Windows).
 
-### Kali or Linux Host
-The following is required to be on the system before running this ansible playbook
-- ansible
+To run the playbook, you can do `./run.sh`, which
+  - runs `apt-get update` to be able to install ansible-playbook
+  - installs `ansible-core` to run ansible-playbook
+  - finally runs the playbook on localhost with `ansible-playbook -i ansible/hosts.ini site.yml -K`
 
-This can be installed using the following command
+## Roles <a name = "roles"></a>
+To decide which roles you would like to do, edit the `site.yml` file (by default only `common` role is used). Each
+role follows the basic ansible structure
+- files - contains any files used in tasks (usually helper scripts or configuration)
+- tasks - the actual tasks to be performed - must contain `main.yml` which can reference other tasks
+- vars - local variables defined for the tasks (you might want to check them out if you want to adjust install directories, packages etc...)
 
-`sudo apt-get install ansible`
+## Authors <a name = "authors"></a>
+- [@AdamZvara](https://github.com/AdamZvara)
 
-### Mac - homebrew
-The following is required on your Mac before installing ansible
-- Homebrew
-
-*If you don't have homebrew, it can be downloaded using the following command*
-
-`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
-
-With homebrew, run the following commands to install ansible
-
-```bash
-# Update brew
-brew update
-
-# Install ansible 
-brew install ansible
-```
----
-## 🎈 Usage <a name="usage"></a>
-To use this playbook, you can either run it from the kali host locally or you can deploy it remotely to a single or multiple hosts from your mac (or linux machine).
-
-### Roles
-To decide which roles you would like to do, edit the `site.yml` file.
-
-Ex: If you are performing an external penetration test, the site file should look like this:
-
-```yaml
-# Main Playbook
----
-- hosts: kali
-  roles:
-    - common 
-    - external
-```
-Vice versa for internal, or even both! They can be integrated to include all tools for each portion of a test. 
-
-### Local Execution - Kali Host
- After ansible is installed on your local kali host, clone this repo and run ansible playbook.
-
-```bash
-# clone repo, move to directory, execute playbook 
-git clone https://github.com/hackedbyagirl/offensive-kali-ansible.git
-cd offensive-kali-ansible
-ansible-playbook -i ansible/local.ini site.yml -K
-```
-*By default, this repo is only made to be used with one host*
-
-### Remote Connection - Single or Multiple Hosts
-This ansible playbook can be deployed against a signle host or multiple machines at the same through a remote connection (our method will be SSH). The following will be accomplished by:
-1. Create a host inventory
-2. Set up SSH conenctions for each host
-3. Set Hosts in site.yml
-4. Set Remote User
-5. Ensure SSH connection
-6. Run
-
-### Set inventory
-This playbook is intented to automate a defaut offensive environment on kali hosts. In order to use this playbook efficently, it should be run against an inventory of kali hosts. This can be done by creating an inventory of hosts.
-
-
-To configure the hosts inventory, open and edit the hosts.ini file to include the hosts in the following manner. This is just an example. 
-
-```
-[kali]
-192.xx.xx.xx
-10.xx.xx.xx
-
-[kali:vars]
-ansible_connection=ssh 
-ansible_user=kali
-
-```
-### Set up SSH connection
-To ensure proper ssh connection, remote key-based authentication must be configured before deploying the playbook. Please do the following on each host that you have listed in your inventory file:
-
-```bash
-# Generate ssh key -- if you have an id_ed25519 ssh key -- skip this step
-ssh-keygen -o -a 100 -t ed25519 -f ~/.ssh/id_ed25519 -C "testuser@ansible-hosts"
-
-# Add ssh key to ssh-agent
-ssh-add ~/.ssh/id_ed25519
-
-# Specify specific key to SSH into a remote server
-ssh-copy-id -i ~/.ssh/id_ed25519 kali@198.xx.xx.xx
-```
-
-### Configure Hosts in site.yml
-This playbook sets up ansible to be ran on a local host. To change that to, edit the `site.yml` file and change 
-
-`hosts: localhost` to `hosts: kali`
-
-
-### Setting a Remote User
-By default, ansible connects to all remote devices with the username you are using on the control node. If that username does not exist on the remote device, you will need to set a different username for the connection in the playbook. By default, this playbook will have the username set to `kali` in the inventory file `ansible/hosts.ini`
-
-##  🚀 Execution <a name = "execution"></a>
-Download, edit, and run!
-```bash
-# clone repo, move to directory, execute playbook 
-git clone https://github.com/hackedbyagirl/offensive-kali-ansible.git
-cd offensive-kali-ansible
-
-# Edit inventory file with host and configurations -- save 
-vim ansible/hosts.ini
-
-# Edit global variabsl 
-vim group_vars/kali/main
-<zsh_user> - line 3
-<group> - line 92
-<user> - line 93
-
-# Edit site.yml to ensure it's being deployed on kali hosts
-vim site.yml
-
-# Deploy playbook
-ansible-playbook -i ansible/hosts.ini site.yml --ask-become-pass
-```
-
-## ✍️ Authors <a name = "authors"></a>
-
-- [@hackedbyagirl](https://github.com/kylelobo) 
-
-## 🎉 Acknowledgements <a name = "acknowledgement"></a>
+## Acknowledgements <a name = "acknowledgement"></a>
+- [@hackedbyagirl](https://github.com/kylelobo) (original ansible script)
+- [@ippsec.rocks](https://github.com/IppSec) (burpsuite, firefox)
 - [@cisagov - ansible-role-kali](https://github.com/cisagov/ansible-role-kali)
