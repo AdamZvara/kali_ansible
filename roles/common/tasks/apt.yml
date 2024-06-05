@@ -5,9 +5,7 @@
 
 - name: Install multiple apt packages
   apt:
-    update_cache: yes
     force_apt_get: yes
-    install_recommends: yes
     name: "{{ item }}"
     state: latest
   loop: "{{ apt_packages }}"

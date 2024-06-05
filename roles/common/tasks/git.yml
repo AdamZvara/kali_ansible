@@ -42,6 +42,7 @@
     repo: "{{ git_CTF_repo }}"
     dest: "{{ ansible_env.HOME }}/CTF"
     force: true
+    owner: "{{ group }}"
   when: CTF_repo.stat.exists == False
 
 # Install Package dependencies

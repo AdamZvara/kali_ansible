@@ -11,81 +11,40 @@ shared_location: "/media/sf_kali_shared/"
 
 # common apt packages to install
 apt_packages:
+- autotools-dev
+- autoconf
 - build-essential
 - dnsutils
 - ffuf
 - gdb
-- gdbserver
 - gem
+- ghidra
+- gdbserver
 - gobuster
 - golang
-- jq
-- libffi-dev
-- libpcap-dev
 - libssl-dev
-- libbz2-dev
-- libreadline-dev
-- libsqlite3-dev
-- libncurses5-dev
-- libncursesw5-dev
-- liblzma-dev
-- libguestfs-tools
-- libssl-dev
-- libwacom-common
-- libkrb5-dev
 - msfpc
 - ncat
 - npm
-- powershell-empire
 - python3-openssl
 - python3-pip
 - python3-venv
 - seclists
-- exiftool
 
 # pip packages
 pip_packages:
   - Cython
   - pwntools
   - requests
-  # - dirhunt
-  # - getsploit
-  # - ldap3
-  # - mitm6
-  # - minikerberos
-  # - pipenv
-  # - poetry
-  # - python3-ldap
-  # - python-libpcap
-  # - pywhat
-  # - unicorn
+  - flask-unsign
+  - capstone
+  - filebytes
+  - keystone-engine
+  - ropper
 
 # Common Role git repos
 git_repos:
   - {path: "/opt/debug", dir_name: "gdb-peda-pwndbg-gef", repo: "https://github.com/apogiatzis/gdb-peda-pwndbg-gef.git"}
-  # - {path: "/opt/recon-tools", dir_name: "checkpwnedemails", repo: "https://github.com/Techno-Hwizrdry/checkpwnedemails.git"}
-  # - {path: "/opt/recon-tools", dir_name: "google-dork-scan", repo: "https://github.com/IvanGlinkin/Fast-Google-Dorks-Scan.git"}
-  # - {path: "/opt/recon-tools", dir_name: "github-search", repo: "https://github.com/gwen001/github-search.git"}
-  # - {path: "/opt/recon-tools", dir_name: "SimplyEmail", repo: "https://github.com/SimplySecurity/SimplyEmail.git"}
-  # - {path: "/opt/recon-tools", dir_name: "o365spray", repo: "https://github.com/hackedbyagirl/o365spray.git"}
-  # - {path: "/opt/recon-tools", dir_name: "DumpsterDiver", repo: "https://github.com/securing/DumpsterDiver.git"}
-  # - {path: "/opt/recon-tools", dir_name: "gitGraber", repo: "https://github.com/hisxo/gitGraber.git"}
-  # - {path: "/opt/recon-tools", dir_name: "changeme", repo: "https://github.com/ztgrace/changeme"}
-  # - {path: "/opt/recon-tools", dir_name: "defaultcredsearch", repo: "https://github.com/ihebski/DefaultCreds-cheat-sheet.git"}
-  # - {path: "/opt/recon-tools", dir_name: "hash-identifier", repo: "https://github.com/HashPals/Name-That-Hash.git"}
-  # - {path: "/opt/recon-tools", dir_name: "Hasher", repo: "https://github.com/FortyNorthSecurity/Hasher.git"}
-  # - {path: "/opt/recon-tools", dir_name: "findsploit", repo: "https://github.com/1N3/Findsploit.git"}
-
-  # - {path: "/opt/web-tools", dir_name: "CMSmap", repo: "https://github.com/dionach/CMSmap.git"}
-  # - {path: "/opt/web-tools", dir_name: "dirsearch", repo: "https://github.com/maurosoria/dirsearch.git"}
-  # - {path: "/opt/web-tools", dir_name: "quieter-firefox", repo: "https://bitbucket.org/mrbbking/quieter-firefox.git"}
-  # - {path: "/opt/web-tools", dir_name: "Token-Reverser", repo: "https://github.com/dariusztytko/token-reverser.git"}
-  # - {path: "/opt/web-tools", dir_name: "JSscanner", repo: "https://github.com/dark-warlord14/JSScanner.git"}
-  # - {path: "/opt/web-tools", dir_name: "jwt_tool", repo: "https://github.com/ticarpi/jwt_tool.git"}
-  # - {path: "/opt/web-tools", dir_name: "SleuthQL", repo: "https://github.com/RhinoSecurityLabs/SleuthQL.git"}
-
-  # - {path: "/opt/network-tools", dir_name: "nlzr", repo: "https://github.com/noahpowers/nlzr.git"}
-  # - {path: "/opt/network-tools", dir_name: "Pentest-Scripts", repo: "https://github.com/averagesecurityguy/scripts.git"}
 
 git_CTF_repo: "https://github.com/AdamZvara/CTF.git"
 

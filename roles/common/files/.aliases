@@ -1,7 +1,7 @@
 alias aliases="cat ~/.aliases"
 
 # List open ports
-alias ports="netstat -tulanp" 
+alias ports="netstat -tulanp"
 
 # Print sha256 of given string
 sha256() {
@@ -44,17 +44,17 @@ alias aslr_off="echo 0 | sudo tee /proc/sys/kernel/randomize_va_space"
 alias aslr_on="echo 2 | sudo tee /proc/sys/kernel/randomize_va_space"
 
 # Pwn templates
-alias pwn_template="cp -r /home/kali/Tools/pwn_template/pwn_template.py ."
-alias pwn_fuzz="cp -r /home/kali/Tools/pwn_template/pwn_fuzz.py ."
-alias pwn_strings="cp -r /home/kali/Tools/pwn_template/pwn_strings.py ."
+alias pwn_template="cp -r /opt/binary/pwn_template/pwn_template.py ."
+alias pwn_fuzz="cp -r /opt/binary/pwn_template/pwn_fuzz.py ."
+alias pwn_strings="cp -r /opt/binary/pwn_template/pwn_strings.py ."
 
 # Ghidra autorun
-alias ghidra_run="python3 /home/kali/Tools/ghidra_autorun/ghidra_run.py"
+alias ghidra_run="python3 /opt/rev/ghidra/ghidra.py"
 alias ghidra_clean="rm -rf *.gpr *.lock *.rep"
 
 # Git
 alias g="git"
-alias gst="git status"            
+alias gst="git status"
 alias gaa="git add *"             # Add all files from current directory
 alias gll="git log --oneline"     # Show history in oneline
 alias gcm="git commit -m"         # Commit with message

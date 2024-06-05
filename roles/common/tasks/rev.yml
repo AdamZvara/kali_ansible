@@ -1,0 +1,4 @@
+- name: Copy ghidra autorun script
+  copy:
+    src: files/ghidra.py
+    dest: /opt/rev/ghidra/

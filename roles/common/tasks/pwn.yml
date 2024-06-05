@@ -6,23 +6,31 @@
     command: /opt/debug/gdb-peda-pwndbg-gef/install.sh
     responses: # skip responses
       "skip" : "y"
-    echo: True
+    timeout: null
+
+- name: Check if pwndbg is installed
+  stat:
+    path: "/usr/bin/gdb-pwndbg"
+  register: pwndbg_present
 
 - name: Install pwndbg separately
   command:
     cmd: /opt/debug/pwndbg/setup.sh
     chdir: /opt/debug/pwndbg/
+  when: pwndbg_present.stat.exists == False
 
 - name: Copy debugger binaries
   copy:
     src: "/opt/debug/gdb-peda-pwndbg-gef/{{ item }}"
     dest: "/usr/bin/{{ item }}"
+    mode: 0755
   loop:
     - gdb-peda
     - gdb-peda-arm
     - gdb-peda-intel
     - gdb-pwndbg
     - gdb-gef
+  when: pwndbg_present.stat.exists == False
 
 - name: Copy gdbinit
   copy:
@@ -31,3 +39,27 @@
 
 - name: Update gdbinit
   command: sed -i "s/~\/\(.*\)\/\(.*\)\.py$/\/opt\/debug\/\1\/\2\.py/" "{{ ansible_env.HOME }}"/.gdbinit
+
+- name: Install one-gadget
+  command: gem install one_gadget
+
+- name: Download patchelf
+  git:
+    repo: "https://github.com/NixOS/patchelf.git"
+    dest: "/opt/binary/patchelf/"
+    force: True
+
+- name: Copy install file of patchelf
+  copy:
+    src: files/install_patchelf.sh
+    dest: /opt/binary/patchelf/
+    mode: 0755
+
+- name: Install patchelf
+  shell:
+    /opt/binary/patchelf/install_patchelf.sh
+
+- name: Copy pwn templates
+  copy:
+    src: files/pwn_template/
+    dest: /opt/binary/pwn_template

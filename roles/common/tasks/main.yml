@@ -78,3 +78,13 @@
         - pwn
   tags:
     - always
+
+- name: Reverse engineering tools
+  include_tasks: rev.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - rev
+  tags:
+    - always
