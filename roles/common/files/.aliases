@@ -1,0 +1,61 @@
+alias aliases="cat ~/.aliases"
+
+# List open ports
+alias ports="netstat -tulanp" 
+
+# Print sha256 of given string
+sha256() {
+    echo -n $1 | sha256sum
+}
+
+# Print md5 of given string
+md5() {
+    echo -n $1 | md5sum
+}
+
+# Extract file, example. "ex package.tar.bz2"
+extract() {
+        if [[ -f $1 ]]; then
+          case $1 in
+            *.tar.bz2) tar xjf $1 ;;
+            *.tar.gz)  tar xzf $1 ;;
+            *.bz2)     bunzip2 $1 ;;
+            *.rar)     rar x $1 ;;
+            *.gz)      gunzip $1  ;;
+            *.tar)     tar xf $1  ;;
+            *.tbz2)    tar xjf $1 ;;
+            *.tgz)     tar xzf $1 ;;
+            *.zip)     unzip $1 ;;
+            *.Z)       uncompress $1 ;;
+            *.7z)      7z x $1 ;;
+            *)         echo $1 cannot be extracted ;;
+          esac
+        else
+          echo $1 is not a valid file
+        fi
+      }
+
+# SSH server
+alias ssh-start="systemctl restart ssh"
+alias ssh-stop="systemctl stop ssh"
+
+# ASLR
+alias aslr_off="echo 0 | sudo tee /proc/sys/kernel/randomize_va_space"
+alias aslr_on="echo 2 | sudo tee /proc/sys/kernel/randomize_va_space"
+
+# Pwn templates
+alias pwn_template="cp -r /home/kali/Tools/pwn_template/pwn_template.py ."
+alias pwn_fuzz="cp -r /home/kali/Tools/pwn_template/pwn_fuzz.py ."
+alias pwn_strings="cp -r /home/kali/Tools/pwn_template/pwn_strings.py ."
+
+# Ghidra autorun
+alias ghidra_run="python3 /home/kali/Tools/ghidra_autorun/ghidra_run.py"
+alias ghidra_clean="rm -rf *.gpr *.lock *.rep"
+
+# Git
+alias g="git"
+alias gst="git status"            
+alias gaa="git add *"             # Add all files from current directory
+alias gll="git log --oneline"     # Show history in oneline
+alias gcm="git commit -m"         # Commit with message
+alias grs="git restore --staged"  # Restore staged files
