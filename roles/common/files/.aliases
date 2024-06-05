@@ -59,3 +59,5 @@ alias gaa="git add *"             # Add all files from current directory
 alias gll="git log --oneline"     # Show history in oneline
 alias gcm="git commit -m"         # Commit with message
 alias grs="git restore --staged"  # Restore staged files
+alias gps="git push"
+alias gpl="git pull"
