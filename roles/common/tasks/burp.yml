@@ -3,19 +3,13 @@
     path: /usr/local/share/ca-certificates/BurpSuiteCA.der
   register: burp_cert
 
-- name: "Copying Burp Script"
-  copy:
-    src: files/getburpcert.sh
-    dest: /tmp/getburpcert.sh
-    mode: 0744
+- name: "Download CA Certificate to temporary file"
+  expect:
+    command: "/bin/bash -c timeout 95 java -Djava.awt.headless=true -jar /usr/share/burpsuite/burpsuite.jar &; sleep 30; curl http://localhost:8080/cert -o /home/kali/cacert.der"
+    response:
+      "accept" : "y"
+    timeout: null
   when: burp_cert.stat.exists == False
-  check_mode: no
-
-- name: "Executing bash script to Download CA Certificate"
-  shell:
-    /tmp/getburpcert.sh
-  when: burp_cert.stat.exists == False
-  check_mode: no
 
 - name: "Copying CA Certificate to /usr/local/share/ca-certificates"
   copy:

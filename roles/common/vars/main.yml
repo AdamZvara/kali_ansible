@@ -12,36 +12,36 @@ shared_location: "/media/sf_kali_shared/"
 # common apt packages to install
 apt_packages:
 - build-essential
-# - dnsutils
-# - ffuf
-# - gdb
-# - gdbserver
-# - gem
-# - gobuster
-# - golang
-# - jq
-# - libffi-dev
-# - libpcap-dev
-# - libssl-dev
-# - libbz2-dev
-# - libreadline-dev
-# - libsqlite3-dev
-# - libncurses5-dev
-# - libncursesw5-dev
-# - liblzma-dev
-# - libguestfs-tools
-# - libssl-dev
-# - libwacom-common
-# - libkrb5-dev
-# - msfpc
-# - ncat
-# - npm
-# - powershell-empire
-# - python3-openssl
-# - python3-pip
-# - python3-venv
-# - seclists
-# - exiftool
+- dnsutils
+- ffuf
+- gdb
+- gdbserver
+- gem
+- gobuster
+- golang
+- jq
+- libffi-dev
+- libpcap-dev
+- libssl-dev
+- libbz2-dev
+- libreadline-dev
+- libsqlite3-dev
+- libncurses5-dev
+- libncursesw5-dev
+- liblzma-dev
+- libguestfs-tools
+- libssl-dev
+- libwacom-common
+- libkrb5-dev
+- msfpc
+- ncat
+- npm
+- powershell-empire
+- python3-openssl
+- python3-pip
+- python3-venv
+- seclists
+- exiftool
 
 # pip packages
 pip_packages:
