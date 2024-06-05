@@ -11,8 +11,7 @@
   when: burp_cert.stat.exists == False
 
 - name: "Executing bash script to Download CA Certificate"
-  shell:
-    /tmp/getburpcert.sh
+  command: /bin/bash -c "/tmp/getburpcert.sh 2>&1 >> {{ log_file }}"
   when: burp_cert.stat.exists == False
 
 - name: "Copying CA Certificate to /usr/local/share/ca-certificates"

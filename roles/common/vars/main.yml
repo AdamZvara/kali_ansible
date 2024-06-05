@@ -2,6 +2,9 @@
 # zsh_setup
 zsh_user: kali
 
+# file used for command output logging
+log_file: /home/kali/.ansible_debug
+
 # Group ownership for the tools that are installed directly to /opt
 group: kali
 user: kali

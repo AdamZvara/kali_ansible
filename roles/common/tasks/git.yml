@@ -42,8 +42,15 @@
     repo: "{{ git_CTF_repo }}"
     dest: "{{ ansible_env.HOME }}/CTF"
     force: true
-    owner: "{{ group }}"
   when: CTF_repo.stat.exists == False
+
+- name: Recursively set CTF repo ownership
+  ansible.builtin.file:
+    path: "{{ ansible_env.HOME }}/CTF"
+    state: directory
+    recurse: yes
+    owner: "{{ group }}"
+    group: "{{ group }}"
 
 # Install Package dependencies
 # - name: Install package dependencies

@@ -11,6 +11,7 @@
 + [Description](#description)
 + [Getting Started](#getting_started)
 + [Roles](#roles)
++ [Issues](#issues)
 + [Authors](#authors)
 + [Acknowledgments](#acknowledgement)
 
@@ -46,6 +47,9 @@ role follows the basic ansible structure
 - files - contains any files used in tasks (usually helper scripts or configuration)
 - tasks - the actual tasks to be performed - must contain `main.yml` which can reference other tasks
 - vars - local variables defined for the tasks (you might want to check them out if you want to adjust install directories, packages etc...)
+
+## Issues <a name = "issues"></a>
+- the burp certificate sometimes does not work on the first try ... if it fails you can run it separately with `ansible-playbook site.yml -K -i ansible/hosts.ini --tags burp`
 
 ## Authors <a name = "authors"></a>
 - [@AdamZvara](https://github.com/AdamZvara)

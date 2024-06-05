@@ -19,4 +19,4 @@
     autoremove: true
 
 - name: Update local Database
-  command: updatedb
+  command: /bin/bash -c "updatedb 2>&1 >> {{ log_file }}"
