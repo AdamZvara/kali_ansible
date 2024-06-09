@@ -25,6 +25,7 @@ apt_packages:
 - gdbserver
 - gobuster
 - golang
+- jq
 - libssl-dev
 - msfpc
 - ncat
