@@ -49,15 +49,15 @@
 #   tags:
 #     - always
 
-- name: Configure Burp
-  include_tasks: burp.yml
-  args:
-    apply:
-      become: True
-      tags:
-        - burp
-  tags:
-    - always
+# - name: Configure Burp
+#   include_tasks: burp.yml
+#   args:
+#     apply:
+#       become: True
+#       tags:
+#         - burp
+#   tags:
+#     - always
 
 - name: Firefox customizations
   include_tasks: firefox.yml
@@ -86,5 +86,15 @@
       become: True
       tags:
         - rev
+  tags:
+    - always
+
+- name: VSCode remote development server
+  include_tasks: vscode-remote.yml
+  args:
+    apply:
+      become: True
+      tags:
+        - vscode
   tags:
     - always

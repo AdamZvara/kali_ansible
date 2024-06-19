@@ -1,0 +1,5 @@
+# Configuration for vscode remote development server
+bind-addr: 0.0.0.0:8081
+auth: password
+password: kali
+cert: false

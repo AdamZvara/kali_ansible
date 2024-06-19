@@ -49,7 +49,7 @@ role follows the basic ansible structure
 - vars - local variables defined for the tasks (you might want to check them out if you want to adjust install directories, packages etc...)
 
 ## Issues <a name = "issues"></a>
-- the burp certificate sometimes does not work on the first try ... if it fails you can run it separately with `ansible-playbook site.yml -K -i ansible/hosts.ini --tags burp`
+- the automatic burp certificate is not working
 
 ## Authors <a name = "authors"></a>
 - [@AdamZvara](https://github.com/AdamZvara)
