@@ -50,6 +50,7 @@ role follows the basic ansible structure
 
 ## Issues <a name = "issues"></a>
 - the automatic burp certificate is not working
+- ngrok
 
 ## Authors <a name = "authors"></a>
 - [@AdamZvara](https://github.com/AdamZvara)
