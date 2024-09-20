@@ -7,4 +7,3 @@ ansible-playbook site.yml -K -i ansible/hosts.ini -v
 kill %1 # stop logging process
 
 rm -rf /home/kali/.ansible_debug # comment to keep the log file for debugging purposes
-# test line
