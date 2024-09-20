@@ -1,0 +1,41 @@
+apropos <keyword>  Searches through man pages' descriptions for instances of a given keyword.
+hostname           Sets or prints the name of the current host system.
+uname              Prints operating system name.
+ifconfig           The ifconfig utility is used to assign or view an address to a network
+                   interface and/or configure network interface parameters.
+ip                 Ip is a utility to show or manipulate routing, network devices, interfaces, and tunnels.
+netstat            Shows network status.
+ss                 Another utility to investigate sockets.
+env                Prints environment or sets and executes a command.
+lsblk              Lists block devices.
+lsusb              Lists USB devices.
+lsof               Lists opened files.
+lspci              Lists PCI devices.
+useradd            Creates a new user or update default new user information.
+userdel            Deletes a user account and related files.
+usermod            Modifies a user account.
+addgroup           Adds a group to the system.
+delgroup           Removes a group from the system.
+passwd             Changes user password.
+dpkg               Install, remove and configure Debian-based packages.
+apt                High-level package management command-line utility.
+aptitude           Alternative to apt.
+snap               Install, remove and configure snap packages.
+gem                Standard package manager for Ruby.
+systemctl          Command-line based service and systemd control manager.
+ps                 Prints a snapshot of the current processes.
+journalctl         Query the systemd journal.
+bg                 Puts a process into background.
+jobs               Lists all processes that are running in the background.
+fg                 Puts a process into the foreground.
+tree               Lists the contents of a directory recursively
+which              Returns the path to a file or link.
+find               Searches for files in a directory hierarchy.
+updatedb           Updates the locale database for existing contents on the system.
+locate             Uses the locale database to find contents on the system.
+cut                Removes sections from each line of files.
+tr                 Replaces certain characters.
+column             Command-line based utility that formats its input into multiple columns.
+awk                Pattern scanning and processing language.
+sed                A stream editor for filtering and transforming text.
+chown              Changes the owner and group of a file or directory
