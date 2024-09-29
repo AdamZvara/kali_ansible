@@ -1,7 +1,7 @@
 - name: Download and install vscode server
   command: /bin/bash -c "curl -fsSL https://code-server.dev/install.sh | sh 2>&1 >> {{ log_file }}"
 
-- name: Set up configuration of vscode server
-  copy:
-    src: files/vscode-server-config.yaml
-    dest: "{{ ansible_env.HOME }}/.config/code-server/"
+    #- name: Set up configuration of vscode server
+    # copy:
+    #src: files/vscode-server-config.yaml
+    #dest: "{{ ansible_env.HOME }}/.config/code-server/"

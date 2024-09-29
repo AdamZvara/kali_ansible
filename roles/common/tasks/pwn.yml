@@ -3,7 +3,7 @@
 
 - name: Install debuggers
   expect:
-    command: /bin/bash -c "/opt/debug/gdb-peda-pwndbg-gef/install.sh 2>&1 >> {{ log_file }}"
+    command: sudo /bin/bash -c "/opt/debug/gdb-peda-pwndbg-gef/install.sh 2>&1 >> {{ log_file }}"
     responses: # skip responses
       "skip" : "y"
     timeout: null
@@ -15,7 +15,7 @@
 
 - name: Install pwndbg separately
   command:
-    cmd: /bin/bash -c "yes | /opt/debug/pwndbg/setup.sh 2>&1 >> {{ log_file }}"
+    cmd: sudo /bin/bash -c "yes | /opt/debug/pwndbg/setup.sh 2>&1 >> {{ log_file }}"
     chdir: /opt/debug/pwndbg/
   when: pwndbg_present.stat.exists == False
 

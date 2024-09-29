@@ -49,7 +49,7 @@
     path: "{{ ansible_env.HOME }}/CTF"
     state: directory
     recurse: yes
-    owner: "{{ group }}"
+    owner: "{{ user }}"
     group: "{{ group }}"
 
 # Install Package dependencies

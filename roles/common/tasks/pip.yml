@@ -1,15 +1,13 @@
 - name: Install and upgrade pip
-  pip:
-    name: pip
-    extra_args: --upgrade
-    executable: pip3
+  command: sudo apt install python3-pip
 
-- name: Install python packages
-  pip:
-    name: '{{ item }}'
-    state: latest
-    executable: pip3
+- name: Install system-wide python packages
+  command: sudo apt install '{{ item }}'
   loop: '{{ pip_packages }}'
 
-- name: Install pipx
-  shell: python3 -m pip install --user pipx
+- name: Pipx ensure path
+  command: sudo pipx ensurepath --global
+
+- name: Install pipx apps
+  command: pipx install '{{ item }}'
+  loop: '{{ pipx_apps }}'

@@ -30,20 +30,19 @@ apt_packages:
 - msfpc
 - ncat
 - npm
-- python3-openssl
-- python3-pip
-- python3-venv
+- pipx
 - seclists
 
 # pip packages
 pip_packages:
-  - Cython
+  - python3-requests
+  - python3-openssl
+  - python3-venv
+
+# pipx apps 
+pipx_apps:
   - pwntools
-  - requests
   - flask-unsign
-  - capstone
-  - filebytes
-  - keystone-engine
   - ropper
 
 # Common Role git repos
