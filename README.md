@@ -59,3 +59,8 @@ role follows the basic ansible structure
 - [@hackedbyagirl](https://github.com/kylelobo) (original ansible script)
 - [@ippsec.rocks](https://github.com/IppSec) (burpsuite, firefox)
 - [@cisagov - ansible-role-kali](https://github.com/cisagov/ansible-role-kali)
+
+### Side notes <a name = "windows"></a>
+- [Windows VM Image](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
+- [Revision Playbook](https://github.com/meetrevision/playbook)
+- [Flare VM](https://github.com/mandiant/flare-vm)
