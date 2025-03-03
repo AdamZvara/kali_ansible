@@ -59,9 +59,3 @@ pip_install_common:
 # python setup
 python_setup_common:
   # - {path: "/opt/web-tools/dirsearch"}
-
-# Firefox plugins
-FirefoxPlugins:
-  - "darkreader"
-  - "foxyproxy-standard"
-  - "wappalyzer"

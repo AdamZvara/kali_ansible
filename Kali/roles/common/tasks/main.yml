@@ -49,26 +49,6 @@
 #   tags:
 #     - always
 
-# - name: Configure Burp
-#   include_tasks: burp.yml
-#   args:
-#     apply:
-#       become: True
-#       tags:
-#         - burp
-#   tags:
-#     - always
-
-- name: Firefox customizations
-  include_tasks: firefox.yml
-  args:
-    apply:
-      become: True
-      tags:
-        - firefox
-  tags:
-    - always
-
 - name: Configure pwntools
   include_tasks: pwn.yml
   args:

@@ -2,19 +2,6 @@
 
 ---
 
-<p align="center"> This Ansible Playbook automates the setup of kali machines used for both external and internal penetration tests. The Ansible Roles included in this playbook automates the downloading and installalation of additional frameworks, packages, and offensive penetration testing and red-teaming utilities for a Kali Linux machine.
-  <br>
-  <b>This repository is a modified fork and contains my personal preferences</b>
-</p>
-
-## Table of Contents
-+ [Description](#description)
-+ [Getting Started](#getting_started)
-+ [Roles](#roles)
-+ [Issues](#issues)
-+ [Authors](#authors)
-+ [Acknowledgments](#acknowledgement)
-
 ## Description <a name = "description"></a>
 This playbook contains multiple tasks embedded within the roles. The current roles included in this ansible playbook include the following:
 
@@ -25,8 +12,6 @@ This playbook contains multiple tasks embedded within the roles. The current rol
   - Installation of binary only tools
   - Sets up basic zsh environment
   - Sets up and install python models and packages
-  - Sets up burpsuite and installs certificate into firefox
-  - Sets up firefox and installs extensions
 - External
   - Not used - maybe in future for external pentesting tools
 - Internal
@@ -48,19 +33,16 @@ role follows the basic ansible structure
 - tasks - the actual tasks to be performed - must contain `main.yml` which can reference other tasks
 - vars - local variables defined for the tasks (you might want to check them out if you want to adjust install directories, packages etc...)
 
-## Issues <a name = "issues"></a>
-- the automatic burp certificate is not working
-- ngrok
+## Manual Configuration <a name = "issues"></a>
 
-## Authors <a name = "authors"></a>
-- [@AdamZvara](https://github.com/AdamZvara)
+Some manual configuration is still needed:
 
-## Acknowledgements <a name = "acknowledgement"></a>
-- [@hackedbyagirl](https://github.com/kylelobo) (original ansible script)
-- [@ippsec.rocks](https://github.com/IppSec) (burpsuite, firefox)
-- [@cisagov - ansible-role-kali](https://github.com/cisagov/ansible-role-kali)
+- remeber to set correct resources to VM - 4GB RAM and 2 cores is usually enough
+- set port forwarding rules
+  - I usually tunnel SSH through host port 3022
+  - if IDA is needed, tunnel it through host port 3023 and guest port 23946
+  - burp through port 3024
+- my current setup for web challs is running browser in host and tunneling it to the VM
+  - use foxyproxy in the browser (I use brave) and set it up to forward to localhost port 3024
+  - add certificate manually, it does not take long and is a one time action
 
-### Side notes <a name = "windows"></a>
-- [Windows VM Image](https://developer.microsoft.com/en-us/windows/downloads/virtual-machines/)
-- [Revision Playbook](https://github.com/meetrevision/playbook)
-- [Flare VM](https://github.com/mandiant/flare-vm)
