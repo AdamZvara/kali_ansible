@@ -17,7 +17,6 @@ apt_packages:
 - autotools-dev
 - autoconf
 - build-essential
-- dnsutils
 - ffuf
 - gdb
 - gem
@@ -30,18 +29,19 @@ apt_packages:
 - msfpc
 - ncat
 - npm
+- python3-pip
 - pipx
+- python3-requests
+- python3-openssl
+- python3-venv
+- python3-pwntools
 - seclists
 
 # pip packages
 pip_packages:
-  - python3-requests
-  - python3-openssl
-  - python3-venv
 
 # pipx apps 
 pipx_apps:
-  - pwntools
   - flask-unsign
   - ropper
 

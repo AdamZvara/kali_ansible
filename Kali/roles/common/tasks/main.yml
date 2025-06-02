@@ -19,12 +19,13 @@
   tags:
     - always
 
-- name: Python Packages
+- name: Install pipx tools
   include_tasks: pip.yml
   args:
     apply:
+      become: True
       tags:
-        - pip
+        - pipx
   tags:
     - always
 

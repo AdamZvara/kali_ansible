@@ -1,12 +1,5 @@
-- name: Install and upgrade pip
-  command: sudo apt install python3-pip
-
-- name: Install system-wide python packages
-  command: sudo apt install '{{ item }}'
-  loop: '{{ pip_packages }}'
-
 - name: Pipx ensure path
-  command: sudo pipx ensurepath --global
+  command: pipx ensurepath --global
 
 - name: Install pipx apps
   command: pipx install '{{ item }}'
